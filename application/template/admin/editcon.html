@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{BOOT_ADD}">
+    <link rel="stylesheet" href="{CSS_ADD}admin/addcon.css">
+    <script src="{JS_ADD}jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <form action="/server/mvc-test/index.php/admin/content/editcon" method="post">
+        <div class="form-group">
+            <label for="cid">所属分类</label>
+            <select class="form-control" name="cid" id="cid" cid="{$data['cid']}">
+
+            </select>
+        </div>
+        <input type="hidden" name="conid" value="{$data['conid']}">
+        <div class="form-group">
+            <label for="ctitle">内容标题</label>
+            <input type="text" class="form-control" id="ctitle" name="ctitle" placeholder="标题" value="{$data['ctitle']}">
+        </div>
+        <div class="form-group">
+            <label for="cons">内容主题</label>
+            <textarea class="form-control" name="cons" id="cons" rows="3">{$data['cons']}</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-default">修改</button>
+    </form>
+</div>
+
+<script src="{JS_ADD}addcon.js"></script>
+</body>
+</html>

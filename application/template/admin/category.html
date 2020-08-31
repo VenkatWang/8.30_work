@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{CSS_ADD}admin/bootstrap.css">
+</head>
+<body>
+
+<div class="container">
+
+    {if $data}
+    <table class="table table-bordered">
+    {$data}
+    </table>
+<!--     <table class="table table-bordered">-->
+<!--         <tr>-->
+<!--             <td>层级</td>-->
+<!--             <td>分类名称</td>-->
+<!--             <td>操作</td>-->
+<!--         </tr>-->
+<!--         {foreach $data as $v}-->
+<!--         <tr>-->
+<!--             <td>一级分类</td>-->
+<!--             <td>{$v["cname"]}</td>-->
+<!--             <td>-->
+<!--                 <a href="javascript:;" attr="{$v['cid']}">添加</a>-->
+<!--             </td>-->
+<!--         </tr>-->
+<!--         {/foreach}-->
+<!--         <tr>-->
+<!--             <td>二级分类</td>-->
+<!--             <td>🗡项目</td>-->
+<!--             <td>添加</td>-->
+<!--         </tr>-->
+<!--     </table>-->
+    {else}
+       <table>
+           <tr>没有数据</tr>
+       </table>
+    {/if}
+</div>
+<style>
+    .panner{
+        width: 60%;
+        height: 400px;
+        background: #fff;
+        box-shadow: 0 0 4px #000;
+        position: absolute;
+        left:0;top:0;right:0;bottom:0;
+        margin: auto;
+        z-index: 1;
+        display: none;
+    }
+</style>
+<div class="panner addpanner">
+   <div class="close">
+       X
+   </div>
+    <form action="/server/mvc-test/index.php/admin/category/add" method="post">
+        <input type="text" name="cname"><br>
+        <input type="hidden" name="cid"><br>
+        <select name="isshow" >
+            <option value="1">在导航可见</option>
+            <option value="0">在导航不可见</option>
+        </select><br>
+        <input type="text" name="tpl_name" placeholder="输入对应的模板"><br>
+        栏目描述:
+        <textarea name="info" cols="10" rows="2">
+
+    </textarea>
+        <input type="submit" value="提交">
+    </form>
+</div>
+
+<div class="panner editpanner">
+    <div class="close">
+        X
+    </div>
+    <form action="/server/mvc-test/index.php/admin/category/add" method="post">
+        <input type="text" name="cname">
+        <select name="pid" id="opts">
+
+        </select>
+        <select name="isshow" id="ishow">
+            <option value="1">在导航可见</option>
+            <option value="0">在导航不可见</option>
+        </select><br>
+        <input type="text" name="tpl_name" placeholder="输入对应的模板"><br>
+        栏目描述:
+        <textarea name="info" cols="10" rows="2"></textarea>
+        <input type="hidden" name="imgurl" id="imgurl">
+        <div class="editupload"></div>
+        <input type="button" value="修改">
+    </form>
+</div>
+<script src="{JS_ADD}jquery-3.3.1.min.js"></script>
+<script src="{JS_ADD}category.js"></script>
+<script src="{JS_ADD}upload.js"></script>
+<script>
+    var upObj=new upload();
+    upObj.createView({
+        parent:document.querySelector(".editupload")
+    })
+    upObj.selectBtn.parentNode.style.lineHeight="50px"
+    upObj.upBtn.style.lineHeight="50px"
+    upObj.up("/server/mvc-test/index.php/admin/category/uploadfile",function (e) {
+           $('#imgurl').val(e[0]);
+           console.log(e)
+    })
+</script>
+</body>
+</html>

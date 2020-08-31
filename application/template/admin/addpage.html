@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/server/mvc-test/index.php/admin/category/add"  style="margin-top: 30px;margin-bottom:30px " method="post" enctype="multipart/form-data">
+    <input type="text" placeholder="添加一级栏目" name="cname"><br>
+    <select name="isshow" >
+        <option value="1">在导航可见</option>
+        <option value="0">在导航不可见</option>
+    </select><br>
+    <input type="text" name="tpl_name" placeholder="输入对应的模板"><br>
+    栏目描述:
+    <textarea name="info" cols="30" rows="10"></textarea>
+    <input type="hidden" value="hidden" name="imgurl">
+    <input type="file" name="file">
+    <div class="upload">
+
+    </div>
+    <input type="submit" value="添加">
+</form>
+<script src="{JS_ADD}jquery-3.3.1.min.js"></script>
+<script src="{JS_ADD}upload.js"></script>
+<script>
+    var uploadObj=new upload();
+    uploadObj.multiple=false;
+    uploadObj.createView({
+        parent:document.querySelector(".upload")
+    })
+    uploadObj.up("/server/mvc-test/index.php/admin/category/uploadfile",function (e) {
+           $("input[type=hidden]").val(e[0]);
+    })
+</script>
+</body>
+</html>

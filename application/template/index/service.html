@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .my-service{
+        width: 1000px;
+        text-align: center;
+        margin: 10px auto;
+        background: #fff;
+        height:auto;
+    }
+    .my-service-box{
+        width: 800px;
+        margin: 10px auto;
+    }
+    .my-service-list{
+        width: 200px;
+        height: 350px;
+        float: left;
+
+    }
+</style>
+<body style="background:#eee">
+     {include file=$header}
+     <div class="my-service">
+         <h3>{$soninfo[0]["cname"]}</h3>
+         <h6>{$soninfo[0]["info"]}</h6>
+      <div class="my-service-box">
+          {foreach $coninfo[0] as $v}
+          <ul class="my-service-list">
+           <li>
+               <img src="http://www.jiasu.cn/images/seravlist1.png" alt="">
+           </li>
+           <li>
+               <h4>{$v["ctitle"]}</h4>
+           </li>
+           <li>{$v["cons"]}</li>
+       </ul>
+    {/foreach}
+          <div style="clear: both;"></div>
+       </div>
+     </div>
+
+       <div class="youshi">
+
+       </div>
+       <div class="liucheng">
+
+       </div>
+
+</body>
+</html>

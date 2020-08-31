@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .list-box{
+        width: 1000px;
+        background:#fff;
+        margin: 10px auto;
+        border: 1px solid #000;
+        padding: 0 50px;
+    }
+    .list{
+        float: left;
+        width: 200px;
+        height: 200px;
+        margin-left: 20px;
+
+    }
+</style>
+<body>
+     {include file=$header}
+     <ul class="list-box">
+         {foreach  $soninfo as $v}
+         <li class="list">
+             <a href="/server/mvc-test/index.php/index/lists?cid={$v['cid']}">
+           <img src="{$v['imgurl']}" alt=""  height="60">
+           <h3>
+               {$v["cname"]}
+           </h3>
+           <div> {$v["info"]}</div>
+             </a>
+         </li>
+         {/foreach}
+         <div style="clear:both"></div>
+     </ul>
+</body>
+</html>

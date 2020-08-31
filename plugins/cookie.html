@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        // var date=new Date();
+        // date.setTime(date.getTime()+1000*10);
+        // date=date.toUTCString();
+        // document.cookie="name=zhangsan;expires="+date;
+        // alert(1);
+        function setCookie(attr,val,second) {
+            var expires="";
+            if(second){
+                var date=new Date();
+                if(second){
+                    var date=new Date();
+                    date.setTime(date.getTime()+1000*second);
+                    date=date.toUTCString();
+                    expires="expries="+date;
+                }
+            }
+             document.cookie=attr+"="+val+";"+expires;
+        }
+        function getCookie(attr) {
+           var cookies=document.cookie;
+           var arr=cookies.split("; ");
+           for(var i in arr){
+               var arr1=arr[i].split("=");
+               if(arr1[0]==attr){
+                   return arr1[1];
+               }
+           }
+        }
+       //删除cookie
+        function delCookie(attr) {
+                var date=new Date();
+                date.setTime(date.getTime()-1000)
+            date=date.toUTCString();
+                expires="expires="+date;
+                document.cookie=attr+"=xx;"+expires;
+
+        }
+        setCookie("name","lisi",10);
+        // getCookie("name")
+        // delCookie("name")
+    </script>
+</head>
+<body>
+
+</body>
+</html>
